@@ -57,7 +57,6 @@ jobs:
     - name: Build and deploy Container App
       uses: azure/container-apps-deploy-action@v1
       with:
-        appSourcePath: ${{ github.workspace }}/src
         acrName: 21012526
         imageToDeploy: 21012526.azurecr.io/album-backend-api:${{ github.sha }}
         containerAppName: ${{ env.CONTAINERAPPS_APP }}
