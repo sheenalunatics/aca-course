@@ -1,7 +1,7 @@
 name: Build and deploy a container to an Azure Container Apps - ACA
 
 env:
-  IMAGE_NAME: sheenalunatics/album-backend-api
+  IMAGE_NAME: sheenalunatics/containerapp-album-api
   CONTAINERAPPS_APP: album-backend-api
   CONTAINERAPPS_ENVIRONMENT: managedEnvironment-rgcontainerapps-be89
   RESOURCE_GROUP: rg-containerapps-github-actions
@@ -56,18 +56,11 @@ jobs:
 
     - name: Build and deploy Container App
       uses: azure/container-apps-deploy-action@v1
-      with:
-        registryUrl: 21012526.azurecr.io
-        registryUsername: 21012526
-        registryPassword: VdJe6kPdoFpgqE8MWKfDdvBli2u6tYn5iUIGWKFR5B
-        containerAppName:  ${{ env.CONTAINERAPPS_APP }}
-        resourceGroup:  ${{ env.RESOURCE_GROUP }}       
-        imageToDeploy: 21012526.azurecr.io/album-backend-api:${{ github.run_number }}
-
-        #registryUrl: ghcr.io
-        #imageToDeploy: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
-        #targetPort: 3500
-        #ingress: external
-        #containerAppName: ${{ env.CONTAINERAPPS_APP }}
-        #containerAppEnvironment: ${{ env.CONTAINERAPPS_ENVIRONMENT }}
-        #resourceGroup: ${{ env.RESOURCE_GROUP }}       
+      with:    
+        registryUrl: ghcr.io
+        imageToDeploy: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+        targetPort: 3500
+        ingress: external
+        containerAppName: ${{ env.CONTAINERAPPS_APP }}
+        containerAppEnvironment: ${{ env.CONTAINERAPPS_ENVIRONMENT }}
+        resourceGroup: ${{ env.RESOURCE_GROUP }}       
