@@ -58,7 +58,7 @@ jobs:
       uses: azure/container-apps-deploy-action@v1
       with:
         registryUrl: 21012526.azurecr.io
-        imageToDeploy: 21012526.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+        imageToDeploy: 21012526.azurecr.io/album-backend-api:${{ github.sha }}
         targetPort: 3500
         ingress: external
         containerAppName: ${{ env.CONTAINERAPPS_APP }}
