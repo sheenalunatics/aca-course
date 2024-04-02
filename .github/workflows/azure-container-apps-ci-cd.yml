@@ -58,7 +58,7 @@ jobs:
       uses: azure/container-apps-deploy-action@v1
       with:
         acrName: 21012526
-        imageToDeploy: 21012526.azurecr.io/album-backend-api:${{ github.sha }}
+        imageToDeploy: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
         containerAppName: ${{ env.CONTAINERAPPS_APP }}
         resourceGroup: ${{ env.RESOURCE_GROUP }}
         #registryUrl: 21012526.azurecr.io
