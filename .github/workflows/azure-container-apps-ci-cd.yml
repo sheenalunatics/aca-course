@@ -57,9 +57,8 @@ jobs:
     - name: Build and deploy Container App
       uses: azure/container-apps-deploy-action@v1
       with:
-        registryUrl: ghcr.io
-        imageToDeploy: 21012526.azurecr.io 
-        #ghcr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+        registryUrl: 21012526.azurecr.io
+        imageToDeploy: 21012526.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
         targetPort: 3500
         ingress: external
         containerAppName: ${{ env.CONTAINERAPPS_APP }}
