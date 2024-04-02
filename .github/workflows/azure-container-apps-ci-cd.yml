@@ -57,12 +57,10 @@ jobs:
     - name: Build and deploy Container App
       uses: azure/container-apps-deploy-action@v1
       with:
-        acrName: 21012526
+        registryUrl: ghcr.io
         imageToDeploy: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.run_number }}
-        containerAppName: ${{ env.CONTAINERAPPS_APP }}
-        resourceGroup: ${{ env.RESOURCE_GROUP }}
-        #registryUrl: 21012526.azurecr.io
-        #imageToDeploy: 21012526.azurecr.io/album-backend-api:${{ github.sha }}
         targetPort: 3500
-        ingress: external      
+        ingress: external
+        containerAppName: ${{ env.CONTAINERAPPS_APP }}
         containerAppEnvironment: ${{ env.CONTAINERAPPS_ENVIRONMENT }}
+        resourceGroup: ${{ env.RESOURCE_GROUP }}       
