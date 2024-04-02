@@ -3,7 +3,7 @@ name: Build and deploy a container to an Azure Container Apps - ACA
 env:
   IMAGE_NAME: sheenalunatics/containerapps-album-api
   CONTAINERAPPS_APP: album-backend-api
-  CONTAINERAPPS_ENVIRONMENT: aca-environment
+  CONTAINERAPPS_ENVIRONMENT: managedEnvironment-rgcontainerapps-be89
   RESOURCE_GROUP: rg-containerapps-github-actions
 
 on:
