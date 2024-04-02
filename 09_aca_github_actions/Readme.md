@@ -8,8 +8,8 @@ Create a Container Apps
 
 ```powershell
 $RESOURCE_GROUP="rg-containerapps-github-actions"
-$LOCATION="westeurope"
-$CONTAINERAPPS_ENVIRONMENT="aca-environment"
+$LOCATION="southeastasia"
+$CONTAINERAPPS_ENVIRONMENT="managedEnvironment-rgcontainerapps-be89"
 $CONTAINERAPPS_APP="album-backend-api"
 
 az group create `
@@ -45,21 +45,22 @@ Create an Azure Service Principal (SPN) to be used by Github Actions to authenti
 $SUBSCRIPTION_ID=$(az account list --query [?isDefault].id -o tsv)
 
 echo $SUBSCRIPTION_ID
-# xxxxxxxx-3960-4e6f-a663-a06fdae23428
+# e987901a-710f-4edd-b4c6-7c98572d04d5
 
 az ad sp create-for-rbac -n "spn-aca-github" --role Contributor --scope /subscriptions/$SUBSCRIPTION_ID --sdk-auth
 # {
-#   "clientId": "2f2fa3da-e98d-4dc5-9121-78959e6e97e5",
-#   "clientSecret": "9MT8Q~B7B8MZv2CsThOWUKX8ft5itN9tw72EoaoZ",
-#   "subscriptionId": "17b12858-3960-4e6f-a663-a06fdae23428",
-#   "tenantId": "558506eb-9459-4ef3-b920-ad55c555e729",
-#   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-#   "resourceManagerEndpointUrl": "https://management.azure.com/",
-#   "activeDirectoryGraphResourceId": "https://graph.windows.net/",
-#   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-#   "galleryEndpointUrl": "https://gallery.azure.com/",
-#   "managementEndpointUrl": "https://management.core.windows.net/"
-# }
+#  "clientId": "a174a817-bd80-4978-99b6-b799cf450707",
+#  "clientSecret": "Fp48Q~qOk8N6k.X3W_D3zRlXmw2eEO3IPO94ZbPm",
+#  "subscriptionId": "e987901a-710f-4edd-b4c6-7c98572d04d5",
+#  "tenantId": "b96cc57b-d146-48f5-a381-7cf474c23a9e",
+#  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+#  "resourceManagerEndpointUrl": "https://management.azure.com/",
+#  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+#  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+#  "galleryEndpointUrl": "https://gallery.azure.com/",
+#  "managementEndpointUrl": "https://management.core.windows.net/"
+#}
+
 ```
 
 In Github, create new secret named `AZURE_CREDENTIALS` and save the SPN.
